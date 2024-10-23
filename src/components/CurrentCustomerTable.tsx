@@ -30,11 +30,11 @@ export const CurrentCustomerTable: React.FC<Props> = ({
   }
 
   const alignment = [
-    'md:text-left',
-    'md:text-left',
-    'md:text-center',
-    'md:text-center',
-    'md:text-center',
+    'xl:text-left',
+    'xl:text-left',
+    'xl:text-center',
+    'xl:text-center',
+    'xl:text-center',
   ]
   const width = [
     'md:basis-1/3',

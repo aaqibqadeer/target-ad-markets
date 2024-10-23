@@ -18,40 +18,42 @@ export default function Home() {
   }, [])
 
   return (
-    <main className='my-8 m-2 md:m-8'>
-      <div className='flex flex-col-reverse md:flex-row text-center justify-between'>
-        <p>RE-Target Advertising Markets</p>
-        <div className='flex justify-center'>
-          <Image src='/logo.png' alt='logo' width={278} height={80} />
+    <main className='my-8 m-2 md:m-8 '>
+      <div className='xl:w-11/12 mx-auto 2xl:w-10/12'>
+        <div className='flex flex-col-reverse md:flex-row text-center justify-between'>
+          <p>RE-Target Advertising Markets</p>
+          <div className='flex justify-center'>
+            <Image src='/logo.png' alt='logo' width={278} height={80} />
+          </div>
         </div>
-      </div>
 
-      <div>
-        <TableContainer
-          currentCustomerData={currentB2BData}
-          futureCustomerData={futureB2BData}
-          currentCustomerHeading={CONSTANTS.MULTI_MARKET_DISCOUNT_HEADER}
-          currentCustomerColumns={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS}
-          currentColumnKeys={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS_KEYS}
-          futureCustomerHeading={['Coming Soon']}
-          futureCustomerColumns={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS}
-          futureColumnKeys={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS_KEYS}
-          heading1='B2B Advertising Markets'
-          heading2='Ads to Real Estate Agents placed in their MLS or Association software'
-          futureCustomerNotes={CONSTANTS.B2B_COMING_SOON_NOTES}
-        />
-      </div>
+        <div>
+          <TableContainer
+            currentCustomerData={currentB2BData}
+            futureCustomerData={futureB2BData}
+            currentCustomerHeading={CONSTANTS.MULTI_MARKET_DISCOUNT_HEADER}
+            currentCustomerColumns={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS}
+            currentColumnKeys={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS_KEYS}
+            futureCustomerHeading={['Coming Soon']}
+            futureCustomerColumns={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS}
+            futureColumnKeys={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS_KEYS}
+            heading1='B2B Advertising Markets'
+            heading2='Ads to Real Estate Agents placed in their MLS or Association software'
+            futureCustomerNotes={CONSTANTS.B2B_COMING_SOON_NOTES}
+          />
+        </div>
 
-      <div className='mt-8'>
-        <TableContainer
-          currentCustomerData={currentB2CData}
-          futureCustomerData={futureB2CData}
-          currentCustomerColumns={CONSTANTS.B2C_COLUMNS}
-          currentColumnKeys={CONSTANTS.B2C_COLUMN_KEYS}
-          futureColumnKeys={[]}
-          heading1='B2C Advertising Markets'
-          heading2='Ads to Home Buyers placed in MLS consumer search portals'
-        />
+        <div className='mt-8'>
+          <TableContainer
+            currentCustomerData={currentB2CData}
+            futureCustomerData={futureB2CData}
+            currentCustomerColumns={CONSTANTS.B2C_COLUMNS}
+            currentColumnKeys={CONSTANTS.B2C_COLUMN_KEYS}
+            futureColumnKeys={[]}
+            heading1='B2C Advertising Markets'
+            heading2='Ads to Home Buyers placed in MLS consumer search portals'
+          />
+        </div>
       </div>
     </main>
   )
