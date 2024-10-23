@@ -1,18 +1,28 @@
 import React from 'react'
 import { CurrentCustomerTable } from './CurrentCustomerTable'
+import { CONSTANTS } from '@/constant'
 
-export const TableContainer = () => {
+interface Props {
+  currentCustomerData: Record<string, any>[]
+  futureCustomerData: Record<string, any>[]
+}
+
+export const TableContainer: React.FC<Props> = ({
+  currentCustomerData,
+  futureCustomerData,
+}) => {
   return (
-    <div>
-      <div>
+    <div className='w-3/4'>
+      <div className='flex gap-8'>
         <h2>B2B Advertising Markets</h2>
         <h2>
           Ads to Real Estate Agents placed in their MLS or Association software
         </h2>
       </div>
       <CurrentCustomerTable
-        headerNames={['A', 'B', 'C']}
-        columnNames={['C1', 'C2', 'C3']}
+        headerNames={CONSTANTS.MULTI_MARKET_DISCOUNT_HEADER}
+        columnNames={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS}
+        data={currentCustomerData}
       />
       {/* <FutureCustomerTable/> */}
     </div>
