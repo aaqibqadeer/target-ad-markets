@@ -18,10 +18,12 @@ export default function Home() {
   }, [])
 
   return (
-    <main className='m-8'>
-      <div className='flex justify-between'>
+    <main className='my-8 m-2 md:m-8'>
+      <div className='flex flex-col-reverse md:flex-row text-center justify-between'>
         <p>RE-Target Advertising Markets</p>
-        <Image src='/logo.png' alt='logo' width={278} height={80} />
+        <div className='flex justify-center'>
+          <Image src='/logo.png' alt='logo' width={278} height={80} />
+        </div>
       </div>
 
       <div>

@@ -20,6 +20,7 @@ export const CustomTable: React.FC<Props> = ({
   columnKeys = [],
 }) => {
   const [notes, setNotes] = useState<string[]>([])
+
   const alignment = [
     'text-left',
     'text-left',
@@ -28,46 +29,54 @@ export const CustomTable: React.FC<Props> = ({
     'text-center',
     'text-center',
     'text-center',
+    'text-left',
   ]
-  const width = [
-    'basis-1/3',
-    'basis-1/4',
-    'basis-1/12',
-    'basis-1/12',
-    'basis-1/12',
-    'basis-1/12',
-    'basis-1/12',
-  ]
-
-  useEffect(() => {
-    getNotes()
-  }, [])
-
-  const getNotes = () => {
-    const tempNotes: string[] = []
-    data?.forEach((row) => {
-      if (row.notes) tempNotes.push(row.notes)
-    })
-    setNotes(tempNotes)
+  const getWidth = () => {
+    const [firstWidth, secondWidth] = data[0]['notes']
+      ? ['basis-3/12', 'basis-[14%]']
+      : ['basis-4/12', 'basis-1/4']
+    return [
+      firstWidth,
+      secondWidth,
+      'basis-1/12',
+      'basis-1/12',
+      'basis-1/12',
+      'basis-1/12',
+      'basis-1/12',
+      'basis-[20%]',
+    ]
   }
+  const width = getWidth()
+
+  // useEffect(() => {
+  //   getNotes()
+  // }, [])
+
+  // const getNotes = () => {
+  //   const tempNotes: string[] = []
+  //   data?.forEach((row) => {
+  //     if (row.notes) tempNotes.push(row.notes)
+  //   })
+  //   setNotes(tempNotes)
+  // }
 
   return (
-    <div className='flex '>
+    <div className='flex lg:px-4'>
       <div className='basis-full'>
-        {/* <div className='flex font-semibold'>
-          {columnNames.map((column, index) => {
+        <div className='hidden xl:flex font-semibold'>
+          {columnKeys.map((column, index) => {
             return (
               <div
                 key={column}
-                className={`flex items-end ${width[index]} ${alignment[index]}`}
+                className={`flex items-start ${width[index]} ${alignment[index]}`}
               >
-                {column}
+                {toTitleCase(column, '-')}
               </div>
             )
           })}
-        </div> */}
+        </div>
 
-        {/* <div className=''>
+        <div className='hidden xl:block'>
           {data?.length &&
             data?.map((row, index) => {
               return (
@@ -88,8 +97,9 @@ export const CustomTable: React.FC<Props> = ({
                 </div>
               )
             })}
-        </div> */}
-        <div className=''>
+        </div>
+
+        <div className='xl:hidden'>
           {data?.length &&
             data?.map((row, index) => {
               return (
@@ -116,6 +126,7 @@ export const CustomTable: React.FC<Props> = ({
             })}
         </div>
       </div>
+
       {/* {notes?.length > 0 && (
         <div className='absolute right-4'>
           <div className='font-bold'>Notes</div>
