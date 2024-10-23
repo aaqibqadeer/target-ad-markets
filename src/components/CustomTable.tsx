@@ -26,8 +26,8 @@ export const CustomTable: React.FC<Props> = ({ columnNames, data }) => {
     'basis-1/12',
   ]
   return (
-    <div className='border-t-2 border-r-2 border-b-2 border-black py-2'>
-      <div className='flex'>
+    <div className='border-t-2 border-r-2 border-b-2 border-black py-4'>
+      <div className='flex font-semibold'>
         {columnNames.map((column, index) => {
           return (
             <div
