@@ -18,7 +18,7 @@ export const CustomTable: React.FC<Props> = ({ columnNames, data }) => {
   ]
   const width = [
     'basis-1/3',
-    'basis-1/6',
+    'basis-1/4',
     'basis-1/12',
     'basis-1/12',
     'basis-1/12',
@@ -32,7 +32,7 @@ export const CustomTable: React.FC<Props> = ({ columnNames, data }) => {
           return (
             <div
               key={column}
-              className={`flex-grow ${width[index]} ${alignment[index]}`}
+              className={`flex items-end ${width[index]} ${alignment[index]}`}
             >
               {column}
             </div>
@@ -48,7 +48,7 @@ export const CustomTable: React.FC<Props> = ({ columnNames, data }) => {
                 {MULTI_MARKET_DISCOUNT_COLUMNS_KEYS.map((key, colIndex) => (
                   <div
                     key={row[key] + colIndex}
-                    className={`flex-grow ${width[colIndex]} ${alignment[colIndex]}`}
+                    className={` ${width[colIndex]} ${alignment[colIndex]}`}
                   >
                     {row[key]}
                   </div>

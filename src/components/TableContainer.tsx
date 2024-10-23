@@ -13,8 +13,8 @@ export const TableContainer: React.FC<Props> = ({
 }) => {
   return (
     <div className='w-3/4'>
-      <div className='flex gap-8'>
-        <h2>B2B Advertising Markets</h2>
+      <div className='flex  text-2xl font-semibold py-4'>
+        <h2 className='basis-1/3'>B2B Advertising Markets</h2>
         <h2>
           Ads to Real Estate Agents placed in their MLS or Association software
         </h2>
