@@ -6,6 +6,7 @@ interface Props {
   columnNames: string[]
   data: Record<string, any>[]
   borderBottom?: boolean
+  columnKeys: string[]
 }
 
 export const CurrentCustomerTable: React.FC<Props> = ({
@@ -13,6 +14,7 @@ export const CurrentCustomerTable: React.FC<Props> = ({
   columnNames,
   data,
   borderBottom,
+  columnKeys,
 }) => {
   const alignment = [
     'text-left',
@@ -30,7 +32,7 @@ export const CurrentCustomerTable: React.FC<Props> = ({
   ]
   return (
     <div>
-      <div className='flex font-semibold'>
+      <div className='flex font-semibold border-b-2 border-black'>
         {headerNames.map((header, index) => {
           return (
             <div key={header} className={`${width[index]} ${alignment[index]}`}>
@@ -43,6 +45,7 @@ export const CurrentCustomerTable: React.FC<Props> = ({
         columnNames={columnNames}
         data={data}
         borderBottom={borderBottom}
+        columnKeys={columnKeys}
       />
     </div>
   )

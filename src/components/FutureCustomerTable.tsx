@@ -6,6 +6,8 @@ interface Props {
   columnNames: string[]
   data: Record<string, any>[]
   borderBottom?: boolean
+  columnKeys: string[]
+  notes?: string[]
 }
 
 export const FutureCustomerTable: React.FC<Props> = ({
@@ -13,6 +15,8 @@ export const FutureCustomerTable: React.FC<Props> = ({
   columnNames,
   data,
   borderBottom,
+  columnKeys,
+  notes = [],
 }) => {
   const alignment = [
     'text-left',
@@ -41,11 +45,20 @@ export const FutureCustomerTable: React.FC<Props> = ({
       </div>
       <CustomTable
         columnNames={columnNames}
+        columnKeys={columnKeys}
         data={data}
         borderBottom={borderBottom}
         textStyle='italic'
         nullValue='TBD'
       />
+      <div className='w-1/3 my-4'>
+        {notes?.length > 0 &&
+          notes?.map((item) => (
+            <div key={item} className='py-2'>
+              {item}
+            </div>
+          ))}
+      </div>
     </div>
   )
 }
