@@ -10,9 +10,7 @@ interface Props {
 }
 
 export const CustomTable: React.FC<Props> = ({
-  columnNames,
   data,
-  borderBottom = false,
   textStyle,
   nullValue = 'TBD',
   columnKeys = [],

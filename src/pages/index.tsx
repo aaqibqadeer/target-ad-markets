@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useEffect } from 'react'
 
 export default function Home() {
-  const { data, loading, error, fetchData } = useTargetPricing(API_END_POINT)
+  const { data, fetchData } = useTargetPricing(API_END_POINT)
   const b2bData = data?.['business-to-business']?.customers || {}
   const currentB2BData = b2bData?.['current'] || {}
   const futureB2BData = b2bData?.['coming-soon'] || {}
