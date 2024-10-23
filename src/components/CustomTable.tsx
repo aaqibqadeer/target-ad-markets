@@ -1,6 +1,4 @@
-import { MULTI_MARKET_DISCOUNT_COLUMNS_KEYS } from '@/constant'
 import { toTitleCase } from '@/util'
-import React, { useEffect, useState } from 'react'
 
 interface Props {
   columnNames: string[]
@@ -19,8 +17,6 @@ export const CustomTable: React.FC<Props> = ({
   nullValue = 'TBD',
   columnKeys = [],
 }) => {
-  const [notes, setNotes] = useState<string[]>([])
-
   const alignment = [
     'text-left',
     'text-left',
@@ -47,18 +43,6 @@ export const CustomTable: React.FC<Props> = ({
     ]
   }
   const width = getWidth()
-
-  // useEffect(() => {
-  //   getNotes()
-  // }, [])
-
-  // const getNotes = () => {
-  //   const tempNotes: string[] = []
-  //   data?.forEach((row) => {
-  //     if (row.notes) tempNotes.push(row.notes)
-  //   })
-  //   setNotes(tempNotes)
-  // }
 
   return (
     <div className='flex lg:px-4'>
@@ -126,15 +110,6 @@ export const CustomTable: React.FC<Props> = ({
             })}
         </div>
       </div>
-
-      {/* {notes?.length > 0 && (
-        <div className='absolute right-4'>
-          <div className='font-bold'>Notes</div>
-          {notes.map((note, index) => (
-            <div key={note + index}>{note}</div>
-          ))}
-        </div>
-      )} */}
     </div>
   )
 }

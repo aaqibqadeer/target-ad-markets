@@ -1,6 +1,5 @@
 import React from 'react'
 import { CurrentCustomerTable } from './CurrentCustomerTable'
-import { CONSTANTS } from '@/constant'
 import { FutureCustomerTable } from './FutureCustomerTable'
 
 interface Props {
