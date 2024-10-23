@@ -1,4 +1,5 @@
 import { MULTI_MARKET_DISCOUNT_COLUMNS_KEYS } from '@/constant'
+import { toTitleCase } from '@/util'
 import React, { useEffect, useState } from 'react'
 
 interface Props {
@@ -53,7 +54,7 @@ export const CustomTable: React.FC<Props> = ({
   return (
     <div className='flex '>
       <div className='basis-full'>
-        <div className='flex font-semibold'>
+        {/* <div className='flex font-semibold'>
           {columnNames.map((column, index) => {
             return (
               <div
@@ -64,13 +65,16 @@ export const CustomTable: React.FC<Props> = ({
               </div>
             )
           })}
-        </div>
+        </div> */}
 
-        <div className=''>
+        {/* <div className=''>
           {data?.length &&
             data?.map((row, index) => {
               return (
-                <div key={row.organization + index} className='flex'>
+                <div
+                  key={row.organization + index}
+                  className='flex flex-col md:flex-row'
+                >
                   {columnKeys.map((key, colIndex) => (
                     <div
                       key={row[key] + colIndex}
@@ -84,16 +88,42 @@ export const CustomTable: React.FC<Props> = ({
                 </div>
               )
             })}
+        </div> */}
+        <div className=''>
+          {data?.length &&
+            data?.map((row, index) => {
+              return (
+                <div
+                  key={row.organization + index}
+                  className='flex flex-col py-4 even:bg-gray-50 odd:bg-white'
+                >
+                  {columnKeys.map((key, colIndex) => (
+                    <div
+                      key={row[key] + colIndex}
+                      className={`flex justify-between ${width[colIndex]}
+                      ${row[key] ? textStyle : ''}`}
+                    >
+                      <div className='text-left font-medium flex-1'>
+                        {toTitleCase(key, '-')}
+                      </div>
+                      <div className='text-left flex-1'>
+                        {row[key] ?? nullValue}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )
+            })}
         </div>
       </div>
-      {notes?.length > 0 && (
+      {/* {notes?.length > 0 && (
         <div className='absolute right-4'>
           <div className='font-bold'>Notes</div>
           {notes.map((note, index) => (
             <div key={note + index}>{note}</div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   )
 }

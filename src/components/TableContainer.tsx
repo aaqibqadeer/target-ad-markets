@@ -31,12 +31,12 @@ export const TableContainer: React.FC<Props> = ({
   futureCustomerNotes,
 }) => {
   return (
-    <div className='w-3/4'>
-      <div className='flex text-2xl font-semibold py-4'>
-        <h2 className='basis-1/3'>{heading1}</h2>
-        <h2>{heading2}</h2>
+    <div className='w-full xl:w-3/4'>
+      <div className='flex flex-col md:flex-row text-xl md:text-2xl font-semibold py-6 md:py-4 text-center'>
+        <h2 className='basis-1/3 py-1'>{heading1}</h2>
+        <h2 className='py-1'>{heading2}</h2>
       </div>
-      <div className='border-r-2 border-black py-4 border-b-2'>
+      <div className='border-black py-4 border-b-2 md:border-r-2'>
         {currentCustomerData.length > 0 && (
           <CurrentCustomerTable
             headerNames={currentCustomerHeading}

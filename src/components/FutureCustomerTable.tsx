@@ -34,10 +34,13 @@ export const FutureCustomerTable: React.FC<Props> = ({
   ]
   return (
     <div>
-      <div className='flex font-semibold border-b-2 border-black mt-8 mb-4'>
+      <div className='flex font-semibold md:border-b-2 md:border-black mt-8 mb-4'>
         {headerNames.map((header, index) => {
           return (
-            <div key={header} className={`${width[index]} ${alignment[index]}`}>
+            <div
+              key={header}
+              className={`${width[index]} ${alignment[index]} border-b-2 border-black`}
+            >
               {header}
             </div>
           )
@@ -51,7 +54,7 @@ export const FutureCustomerTable: React.FC<Props> = ({
         textStyle='italic'
         nullValue='TBD'
       />
-      <div className='w-1/3 my-4'>
+      <div className='w-full md:w-1/3 my-4'>
         {notes?.length > 0 &&
           notes?.map((item) => (
             <div key={item} className='py-2'>

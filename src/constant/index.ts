@@ -45,7 +45,7 @@ export const B2C_COLUMN_KEYS = [
   'setup-fee',
   'monthly-fee-6-month',
   'monthly-fee-12-month',
-  // 'notes',
+  'notes',
 ]
 
 export const API_END_POINT = 'https://qa3.savvycard.com/api/re-target/pricing'
