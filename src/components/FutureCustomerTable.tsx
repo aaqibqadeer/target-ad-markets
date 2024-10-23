@@ -8,7 +8,7 @@ interface Props {
   borderBottom?: boolean
 }
 
-export const CurrentCustomerTable: React.FC<Props> = ({
+export const FutureCustomerTable: React.FC<Props> = ({
   headerNames,
   columnNames,
   data,
@@ -30,7 +30,7 @@ export const CurrentCustomerTable: React.FC<Props> = ({
   ]
   return (
     <div>
-      <div className='flex font-semibold'>
+      <div className='flex font-semibold border-b-2 border-black mt-8 mb-4'>
         {headerNames.map((header, index) => {
           return (
             <div key={header} className={`${width[index]} ${alignment[index]}`}>
@@ -43,6 +43,8 @@ export const CurrentCustomerTable: React.FC<Props> = ({
         columnNames={columnNames}
         data={data}
         borderBottom={borderBottom}
+        textStyle='italic'
+        nullValue='TBD'
       />
     </div>
   )

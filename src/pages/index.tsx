@@ -25,6 +25,11 @@ export default function Home() {
         currentCustomerData={currentCustomers}
         futureCustomerData={futureCustomerData}
       />
+
+      <TableContainer
+        currentCustomerData={currentCustomers}
+        futureCustomerData={futureCustomerData}
+      />
     </main>
   )
 }

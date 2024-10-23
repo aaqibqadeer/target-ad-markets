@@ -4,9 +4,18 @@ import React from 'react'
 interface Props {
   columnNames: string[]
   data: Record<string, any>[]
+  borderBottom?: boolean
+  textStyle?: string
+  nullValue?: string
 }
 
-export const CustomTable: React.FC<Props> = ({ columnNames, data }) => {
+export const CustomTable: React.FC<Props> = ({
+  columnNames,
+  data,
+  borderBottom = false,
+  textStyle,
+  nullValue = 'N/A',
+}) => {
   const alignment = [
     'text-left',
     'text-left',
@@ -26,7 +35,7 @@ export const CustomTable: React.FC<Props> = ({ columnNames, data }) => {
     'basis-1/12',
   ]
   return (
-    <div className='border-t-2 border-r-2 border-b-2 border-black py-4'>
+    <div>
       <div className='flex font-semibold'>
         {columnNames.map((column, index) => {
           return (
@@ -48,9 +57,11 @@ export const CustomTable: React.FC<Props> = ({ columnNames, data }) => {
                 {MULTI_MARKET_DISCOUNT_COLUMNS_KEYS.map((key, colIndex) => (
                   <div
                     key={row[key] + colIndex}
-                    className={` ${width[colIndex]} ${alignment[colIndex]}`}
+                    className={` ${width[colIndex]} ${alignment[colIndex]} ${
+                      row[key] ? textStyle : ''
+                    }`}
                   >
-                    {row[key]}
+                    {row[key] ?? nullValue}
                   </div>
                 ))}
               </div>
