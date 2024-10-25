@@ -10,13 +10,7 @@ export const useTargetPricing = (url: any, options: any = {}) => {
       setLoading(true)
       setError(null)
 
-      const response = await fetch(url, {
-        ...options,
-        headers: {
-          'Content-Type': 'application/json',
-          ...options.headers,
-        },
-      })
+      const response = await fetch(url)
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)

@@ -1,3 +1,5 @@
+import { Error } from '@/components/Error'
+import { Spinner } from '@/components/Spinner'
 import { TableContainer } from '@/components/TableContainer'
 import { API_END_POINT, CONSTANTS } from '@/constant'
 import { useTargetPricing } from '@/Hooks/useTargetPricing'
@@ -5,7 +7,7 @@ import Image from 'next/image'
 import { useEffect } from 'react'
 
 export default function Home() {
-  const { data, fetchData } = useTargetPricing(API_END_POINT)
+  const { data, fetchData, error, loading } = useTargetPricing(API_END_POINT)
   const b2bData = data?.['business-to-business']?.customers || {}
   const currentB2BData = b2bData?.['current'] || {}
   const futureB2BData = b2bData?.['coming-soon'] || {}
@@ -27,33 +29,55 @@ export default function Home() {
           </div>
         </div>
 
-        <div>
-          <TableContainer
-            currentCustomerData={currentB2BData}
-            futureCustomerData={futureB2BData}
-            currentCustomerHeading={CONSTANTS.MULTI_MARKET_DISCOUNT_HEADER}
-            currentCustomerColumns={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS}
-            currentColumnKeys={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS_KEYS}
-            futureCustomerHeading={['Coming Soon']}
-            futureCustomerColumns={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS}
-            futureColumnKeys={CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS_KEYS}
-            heading1='B2B Advertising Markets'
-            heading2='Ads to Real Estate Agents placed in their MLS or Association software'
-            futureCustomerNotes={CONSTANTS.B2B_COMING_SOON_NOTES}
-          />
-        </div>
+        {loading && <Spinner />}
 
-        <div className='mt-8'>
-          <TableContainer
-            currentCustomerData={currentB2CData}
-            futureCustomerData={futureB2CData}
-            currentCustomerColumns={CONSTANTS.B2C_COLUMNS}
-            currentColumnKeys={CONSTANTS.B2C_COLUMN_KEYS}
-            futureColumnKeys={[]}
-            heading1='B2C Advertising Markets'
-            heading2='Ads to Home Buyers placed in MLS consumer search portals'
-          />
-        </div>
+        {!error && !loading && (
+          <div>
+            {b2bData && (
+              <div>
+                <TableContainer
+                  currentCustomerData={currentB2BData}
+                  futureCustomerData={futureB2BData}
+                  currentCustomerHeading={
+                    CONSTANTS.MULTI_MARKET_DISCOUNT_HEADER
+                  }
+                  currentCustomerColumns={
+                    CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS
+                  }
+                  currentColumnKeys={
+                    CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS_KEYS
+                  }
+                  futureCustomerHeading={['Coming Soon']}
+                  futureCustomerColumns={
+                    CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS
+                  }
+                  futureColumnKeys={
+                    CONSTANTS.MULTI_MARKET_DISCOUNT_COLUMNS_KEYS
+                  }
+                  heading1='B2B Advertising Markets'
+                  heading2='Ads to Real Estate Agents placed in their MLS or Association software'
+                  futureCustomerNotes={CONSTANTS.B2B_COMING_SOON_NOTES}
+                />
+              </div>
+            )}
+
+            {b2cData && (
+              <div className='mt-8'>
+                <TableContainer
+                  currentCustomerData={currentB2CData}
+                  futureCustomerData={futureB2CData}
+                  currentCustomerColumns={CONSTANTS.B2C_COLUMNS}
+                  currentColumnKeys={CONSTANTS.B2C_COLUMN_KEYS}
+                  futureColumnKeys={[]}
+                  heading1='B2C Advertising Markets'
+                  heading2='Ads to Home Buyers placed in MLS consumer search portals'
+                />
+              </div>
+            )}
+          </div>
+        )}
+
+        {error && <Error errorMessage={error} />}
       </div>
     </main>
   )
