@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const useTargetPricing = (url: any, options: any = {}) => {
+export const useTargetPricing = (url: any) => {
   const [data, setData] = useState<Record<string, any>>()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
