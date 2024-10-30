@@ -25,6 +25,8 @@ export const CustomTable: React.FC<Props> = ({
     'text-center',
     'text-left',
   ]
+
+  const feesKeys = ['setup-fee', 'monthly-fee-6-month', 'monthly-fee-12-month']
   const getWidth = () => {
     const [firstWidth, secondWidth] = data[0]['notes']
       ? ['basis-3/12', 'basis-[14%]']
@@ -41,6 +43,19 @@ export const CustomTable: React.FC<Props> = ({
     ]
   }
   const width = getWidth()
+
+  const getFormattedValue = (
+    key: string,
+    value: string | number | string[],
+  ) => {
+    if (key === 'agent-count') return value.toLocaleString()
+
+    if (!!value && feesKeys.includes(key)) return `$${value}`
+
+    if (Array.isArray(value) && key === 'states') return value.join(', ')
+
+    return value
+  }
 
   return (
     <div className='flex lg:px-4'>
@@ -73,14 +88,13 @@ export const CustomTable: React.FC<Props> = ({
                         row[key] ? textStyle : ''
                       }`}
                     >
-                      {row[key] ?? nullValue}
+                      {getFormattedValue(key, row[key]) ?? nullValue}
                     </div>
                   ))}
                 </div>
               )
             })}
         </div>
-
         <div className='xl:hidden'>
           {data?.length &&
             data?.map((row, index) => {
@@ -99,7 +113,7 @@ export const CustomTable: React.FC<Props> = ({
                         {toTitleCase(key, '-')}
                       </div>
                       <div className='text-left flex-1'>
-                        {row[key] ?? nullValue}
+                        {getFormattedValue(key, row[key]) ?? nullValue}
                       </div>
                     </div>
                   ))}
