@@ -45,7 +45,7 @@ export const CurrentCustomerTable: React.FC<Props> = ({
   ]
   return (
     <div>
-      <div className='flex flex-col font-medium xl:font-semibold xl:flex-row border-b-2 border-black xl:px-4 pb-2'>
+      <div className='flex flex-col font-medium xl:font-semibold xl:flex-row border-b-2 border-black dark:border-white xl:px-4 pb-2'>
         {headerNames.map((header, index) => {
           return (
             <div key={header} className={`${width[index]} ${alignment[index]}`}>

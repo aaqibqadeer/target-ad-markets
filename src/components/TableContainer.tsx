@@ -35,7 +35,7 @@ export const TableContainer: React.FC<Props> = ({
         <h2 className='xl:basis-1/3 py-1 flex-1 xl:flex-none'>{heading1}</h2>
         <h2 className='py-1 flex-1 xl:flex-none'>{heading2}</h2>
       </div>
-      <div className='border-black py-4 border-b-2 xl:border-l-2 xl:border-r-2 xl:py-0'>
+      <div className='border-black dark:border-white   py-4 border-b-2 xl:border-l-2 xl:border-r-2 xl:py-0'>
         {currentCustomerData.length > 0 && (
           <CurrentCustomerTable
             headerNames={currentCustomerHeading}

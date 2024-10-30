@@ -101,7 +101,7 @@ export const CustomTable: React.FC<Props> = ({
               return (
                 <div
                   key={row.organization + index}
-                  className='flex flex-col py-4 even:bg-gray-50 odd:bg-white'
+                  className='flex flex-col py-4 even:bg-gray-50 odd:bg-white dark:odd:bg-black dark:even:bg-slate-800'
                 >
                   {columnKeys.map((key, colIndex) => (
                     <div

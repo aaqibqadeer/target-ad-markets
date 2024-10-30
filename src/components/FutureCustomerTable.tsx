@@ -34,12 +34,12 @@ export const FutureCustomerTable: React.FC<Props> = ({
   ]
   return (
     <div>
-      <div className='flex font-semibold md:border-b-2 md:border-black mt-8 mb-4 lg:px-2'>
+      <div className='flex font-semibold md:border-b-2 md:border-black dark:border-white  mt-8 mb-4 lg:px-2'>
         {headerNames.map((header, index) => {
           return (
             <div
               key={header}
-              className={`${width[index]} ${alignment[index]} border-b-2 border-black md:border-0`}
+              className={`${width[index]} ${alignment[index]} border-b-2 border-black dark:border-white md:border-0`}
             >
               {header}
             </div>
